@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/cardViewGeneralStyle"
+    app:contentPaddingTop="@dimen/padding_10dp"
+    app:contentPaddingLeft="@dimen/padding_10dp"
+    app:contentPaddingRight="@dimen/padding_10dp">
+
+    <TextView
+        android:id="@+id/textView_title_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Text (0 - 100)"
+        android:textColor="@color/colorAccent"/>
+
+    <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+        android:id="@+id/single_seek_bar_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        app:bar_color="@color/colorPrimaryLight"
+        app:bar_highlight_color="@color/colorPrimaryDark"
+        app:min_value="0"
+        app:max_value="100"
+        app:corner_radius="10"
+        app:left_thumb_image="@drawable/ic_radio_button_checked_blue_24dp"
+        app:left_thumb_image_pressed="@drawable/ic_radio_button_checked_24dp"
+        app:right_thumb_image="@drawable/ic_radio_button_checked_blue_24dp"
+        app:right_thumb_image_pressed="@drawable/ic_radio_button_checked_24dp"
+        app:data_type="_integer"/>
+
+</android.support.v7.widget.CardView>
