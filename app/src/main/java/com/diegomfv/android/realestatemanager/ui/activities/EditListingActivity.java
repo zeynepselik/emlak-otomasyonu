@@ -258,7 +258,7 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
         switch (view.getId()) {
 
             case R.id.button_card_view_with_button_id: {
-                ToastHelper.toastShort(this, "Sorry, the address cannot be modified");
+                ToastHelper.toastShort(this, "\n" +"Üzgünüz, adres değiştirilemez");
             }
             break;
 
@@ -301,7 +301,7 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
             tvSold.setText(getDateSold());
 
         } else {
-            ToastHelper.toastShort(this, "The date must be today or before today");
+            ToastHelper.toastShort(this, "\n" + "Tarih bugün veya bugünden önce olmalı");
             dateSold = "";
             cbSold.setChecked(false);
             tvSold.setText(getDateSold());
@@ -416,6 +416,7 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
 
         this.getAutocompleteTextView();
         this.getEditTexts();
+        this.getEditTexts();
         this.getTextViews();
         this.getCheckbox();
 
@@ -468,19 +469,19 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
      */
     private void setAllHints() {
         Log.d(TAG, "setAllHints: called!");
-        // TODO: 23/08/2018 Use Resources instead of hardcoded strings
-        setHint(cardViewType, "Type");
-        setHint(cardViewPrice, "Price (" + Utils.getCurrencySymbol(currency) + ")");
-        setHint(cardViewSurfaceArea, "Surface Area (sqm)");
-        setHint(cardViewNumberOfBedrooms, "Bedrooms");
-        setHint(cardViewNumberOfBathrooms, "Bathrooms");
-        setHint(cardViewNumberOfOtherRooms, "Other Rooms");
-        setHint(cardViewDescription, "Description");
-        setHint(cardViewAddress, "Address");
+        setHint(cardViewType, "Ev türü");
+        setHint(cardViewPrice, "Fiyat (" + Utils.getCurrencySymbol(currency) + ")");
+        setHint(cardViewSurfaceArea, "Metrekaresi");
+        setHint(cardViewNumberOfBedrooms, "Odalar");
+        setHint(cardViewNumberOfBathrooms, "Banyolar");
+        setHint(cardViewNumberOfOtherRooms, "Diğer odalar");
+        setHint(cardViewDescription, "Açıklama");
+        setHint(cardViewAddress, "Adres");
     }
 
     /**
-     * Method that sets the hint in a TextInputLayout.
+
+     * Bir TextInputLayout'ta ipucunu ayarlayan yöntem.
      */
     private void setHint(CardView cardView, String hint) {
         Log.d(TAG, "setHint: called!");
@@ -501,7 +502,7 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
      */
     private void updatePriceHint() {
         Log.d(TAG, "updatePriceHint: called!");
-        setHint(cardViewPrice, "Price (" + Utils.getCurrencySymbol(currency) + ")");
+        setHint(cardViewPrice, "Fiyat(" + Utils.getCurrencySymbol(currency) + ")");
     }
 
     /**
@@ -509,11 +510,15 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
      */
     private void setTextButtons() {
         Log.d(TAG, "setTextButtons: called!");
-        this.buttonEditListing.setText("Edit Listing");
-        this.buttonEditAddress.setText("Edit Address");
+        this.buttonEditListing.setText("Listeyi Güncelle");
+        this.buttonEditAddress.setText("Adresi Güncelle");
     }
 
     /**
+     *
+     *
+     * *
+     *
      * Method to set the views with the information from the real estate cache object.
      */
     private void setAllInformation() {
@@ -580,7 +585,7 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Log.d(TAG, "onItemClicked: item(" + position + ") clicked!");
                         if (getListOfImagesRealEstateCache().get(position).getDescription().isEmpty()) {
-                            ToastHelper.toastShort(EditListingActivity.this, "No description available");
+                            ToastHelper.toastShort(EditListingActivity.this, "\n" + "Açıklama mevcut değil");
 
                         } else {
                             ToastHelper.toastShort(EditListingActivity.this, getListOfImagesRealEstateCache().get(position).getDescription());
@@ -605,7 +610,8 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
     }
 
     /**
-     * Method that updates the real estate cache information (strings).
+
+     * Emlak önbellek bilgilerini (dizeleri) güncelleyen yöntem.
      */
     private void updateStringValues() {
         Log.d(TAG, "updateStringValues: called!");
@@ -718,7 +724,7 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
 
         } else {
             ToastHelper.toastShort(this,
-                    "Sorry, there is a problem with some data");
+                    "Üzgünüm, bazı datalarda sorun var");
         }
     }
 
@@ -855,8 +861,8 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
     }
 
     /**
-     * Method that inserts the Bitmaps in the database, creates a notification,
-     * deletes the cache and launches MainActivity
+     * Bitmapleri veri tabanına yerleştiren yöntem, bir bildirim oluşturur,
+     * önbelleği siler ve MainActivity'yi başlatır
      */
     public void insertAllBitmapsInImagesDirectory() {
         Log.d(TAG, "insertAllBitmapsInImagesDirectory: called!");
@@ -874,18 +880,15 @@ public class EditListingActivity extends BaseActivity implements DatePickerFragm
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
-     * Method that checks if it is necessary to launch a dialog asking the user if he/she is
-     * sure to leave. It depends on if there is information inputted.
-     */
+
     private void launchAreYouSureDialog() {
         Log.d(TAG, "launchAreYouSureDialog: called!");
         Utils.launchSimpleDialog(
                 this,
-                "The changes will not be saved",
-                "Are you sure you want to proceed?",
-                "Yes, I am sure",
-                "No",
+                "Değişiklikler kaydedilmeyecek",
+                "Devam etmek istediğinize emin misiniz?",
+                "Evet, Eminim",
+                "Hayır",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

@@ -10,7 +10,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:layout_gravity="center"
-        android:text="İletişim Bilgileriniz"
+        android:text="Adres Bilgileriniz"
         android:textStyle="bold"
         android:textSize="30sp"
         android:textColor="@color/colorPrimaryDark"/>

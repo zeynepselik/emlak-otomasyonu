@@ -111,7 +111,7 @@
                         android:id="@+id/textView_address_title_id"
                         style="@style/textViewTitleStyle"
                         android:layout_marginTop="15dp"
-                        android:text="Address" />
+                        android:text="adres" />
 
                     <TextView
                         android:id="@+id/textView_street_id"

@@ -1,9 +1,9 @@
 package com.diegomfv.android.realestatemanager.ui.activities;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -19,7 +19,9 @@ import com.diegomfv.android.realestatemanager.util.Utils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.annotations.Nullable;
 
+import static com.diegomfv.android.realestatemanager.util.Utils.readCurrentAgentData;
 import static com.diegomfv.android.realestatemanager.util.Utils.setOverflowButtonColor;
 
 
@@ -31,13 +33,12 @@ public class DetailActivity extends BaseActivity {
     @BindView(R.id.toolbar_id)
     Toolbar toolbar;
 
-
-
     private Bundle bundle;
 
     private int currency;
 
     private Unbinder unbinder;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +57,11 @@ public class DetailActivity extends BaseActivity {
 
         loadFragment(bundle);
 
+
+
     }
+
+
 
     @Override
     protected void onDestroy() {
@@ -98,7 +103,7 @@ public class DetailActivity extends BaseActivity {
         Log.d(TAG, "configureToolbar: called!");
 
         setSupportActionBar(toolbar);
-        setTitle("Create a New Listing");
+        setTitle("Yeni bir liste oluştur");
         setOverflowButtonColor(toolbar, Color.WHITE);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

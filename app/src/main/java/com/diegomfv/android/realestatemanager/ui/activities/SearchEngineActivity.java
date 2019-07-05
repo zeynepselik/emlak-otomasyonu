@@ -667,14 +667,14 @@ public class SearchEngineActivity extends BaseActivity {
     private void setAllTexts() {
         Log.d(TAG, "setAllTexts: called!");
         updatePriceTextView();
-        tvSurfaceArea.setText("Surface area (sqm) - [" + 0 + ", " + (int) maxSurfaceArea + "]");
-        tvNumberOfRooms.setText("Number of Rooms - [" + 0 + ", " + maxNumberOfRooms + "]");
-        tvAmountOfPhotos.setText("Amount of Photos - [" + 0 + ", " + maxAmountOfPhotos + "]");
+        tvSurfaceArea.setText("Metrekaresi - [" + 0 + ", " + (int) maxSurfaceArea + "]");
+        tvNumberOfRooms.setText("Oda sayısı - [" + 0 + ", " + maxNumberOfRooms + "]");
+        tvAmountOfPhotos.setText("Fotoğraf miktarı - [" + 0 + ", " + maxAmountOfPhotos + "]");
 
-        tvTypes.setText("Types of Building");
-        tvCities.setText("Cities");
-        tvLocalities.setText("Localities");
-        tvPointsOfInterest.setText("Types of Points of Interest");
+        tvTypes.setText("Bina Türler");
+        tvCities.setText("Şehirler");
+        tvLocalities.setText("Bölgeler");
+        tvPointsOfInterest.setText("Açıklama");
     }
 
     /**
@@ -759,11 +759,11 @@ public class SearchEngineActivity extends BaseActivity {
         if (seekBar == seekBarPrice) {
             tvPrice.setText("Price (" + Utils.getCurrencySymbol(currency) + ") - [" + min + ", " + max + "]");
         } else if (seekBar == seekBarSurfaceArea) {
-            tvSurfaceArea.setText("Surface Area (sqm) - [" + min + ", " + max + "]");
+            tvSurfaceArea.setText("Metrekaresş - [" + min + ", " + max + "]");
         } else if (seekBar == seekBarNumberOfRooms) {
-            tvNumberOfRooms.setText("Number of Rooms - [" + min + ", " + max + "]");
+            tvNumberOfRooms.setText("Oda sayısı - [" + min + ", " + max + "]");
         } else if (seekBar == seekBarAmountOfPhotos) {
-            tvAmountOfPhotos.setText("Amount of Photos - [" + min + ", " + max + "]");
+            tvAmountOfPhotos.setText("Fotoğraf miktarı - [" + min + ", " + max + "]");
         }
     }
 

@@ -32,7 +32,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
-import com.diegomfv.android.realestatemanager.R;
+import com.diegomfv.android.realestatemanager.*;
 import com.diegomfv.android.realestatemanager.adapters.RVAdapterMediaHorizontalCreate;
 import com.diegomfv.android.realestatemanager.constants.Constants;
 import com.diegomfv.android.realestatemanager.data.AppExecutors;
@@ -418,14 +418,14 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
     private void setAllHints() {
         Log.d(TAG, "setAllHints: called!");
         // TODO: 23/08/2018 Use Resources instead of hardcoded strings
-        setHint(cardViewType, "Type");
-        setHint(cardViewPrice, "Price (" + Utils.getCurrencySymbol(currency) + ")");
-        setHint(cardViewSurfaceArea, "Surface Area (sqm)");
-        setHint(cardViewNumberOfBedrooms, "Bedrooms");
-        setHint(cardViewNumberOfBathrooms, "Bathrooms");
-        setHint(cardViewNumberOfOtherRooms, "Other Rooms");
-        setHint(cardViewDescription, "Description");
-        setHint(cardViewAddress, "Address");
+        setHint(cardViewType, "Adınız");
+        setHint(cardViewPrice, "Fiyatı (" + Utils.getCurrencySymbol(currency) + ")");
+        setHint(cardViewSurfaceArea, "Metrekaresi");
+        setHint(cardViewNumberOfBedrooms, "Odalar");
+        setHint(cardViewNumberOfBathrooms, "Banyolar");
+        setHint(cardViewNumberOfOtherRooms, "Diğer odalar");
+        setHint(cardViewDescription, "Açıklama");
+        setHint(cardViewAddress, "Adres");
     }
 
     /**
@@ -442,16 +442,17 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
      */
     private void updatePriceHint() {
         Log.d(TAG, "updatePriceHint: called!");
-        setHint(cardViewPrice, "Price (" + Utils.getCurrencySymbol(currency) + ")");
+        setHint(cardViewPrice, "Fiyatı (" + Utils.getCurrencySymbol(currency) + ")");
     }
 
     /**
-     * Method to set the text of the buttons.
+
+     * Düğmelerin metnini ayarlama yöntemi.
      */
     private void setTextButtons() {
         Log.d(TAG, "setTextButtons: called!");
-        buttonInsertListing.setText("Insert Listing");
-        buttonAddAddress.setText("Add Address");
+        buttonInsertListing.setText("Listeyi Güncelle");
+        buttonAddAddress.setText("Adres Ekle");
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -634,7 +635,7 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
                             /* Notifying the user
                              * */
                             ToastHelper.toastShort(CreateNewListingActivity.this,
-                                    "The address is valid");
+                                    "Adres geçerlidir");
 
                             /* Fill the address of the cache
                              * */
@@ -649,7 +650,7 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
                             getPlaceDetails(placeFromText.getCandidates().get(0).getPlaceId());
 
                         } else {
-                            ToastHelper.toastLong(CreateNewListingActivity.this, "Address not valid");
+                            ToastHelper.toastLong(CreateNewListingActivity.this, "Geçersiz adres girdiniz");
                         }
 
 
@@ -659,7 +660,7 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
                     public void onError(Throwable e) {
                         Log.e(TAG, "onError: " + e.getMessage());
                         ToastHelper.toastShort(CreateNewListingActivity.this,
-                                "The address is not valid");
+                                "Geçersiz adres girdiniz");
                     }
 
                     @Override
@@ -701,7 +702,7 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
 
                         } else {
                             ToastHelper.toastShort(CreateNewListingActivity.this,
-                                    "There was a problem with the latitude and longitude");
+                                    "Birşeyler yanlış!");
                         }
                     }
 
@@ -709,7 +710,7 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
                     public void onError(Throwable e) {
                         Log.e(TAG, "onError: " + e.getMessage());
                         ToastHelper.toastShort(CreateNewListingActivity.this,
-                                "There was a problem with the latitude and longitude");
+                                "Birşeyler yanlış!");
                     }
 
                     @Override
@@ -774,7 +775,7 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
 
                         } else {
                             ToastHelper.toastShort(CreateNewListingActivity.this,
-                                    "There was a problem fetching nearby places");
+                                    "Yakındaki yerleri getirmede bir sorun oluştu");
                         }
                     }
 
@@ -782,7 +783,7 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
                     public void onError(Throwable e) {
                         Log.e(TAG, "onError: " + e.getMessage());
                         ToastHelper.toastShort(CreateNewListingActivity.this,
-                                "There was a problem fetching nearby places");
+                                "Yakındaki yerleri getirmede bir sorun oluştu");
                     }
 
                     @Override
@@ -915,18 +916,18 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
         Log.d(TAG, "allChecksCorrect: called!");
 
         if (!Utils.textViewIsFilled(tvAddress)) {
-            ToastHelper.toastLong(this, "Please, insert a valid address");
+            ToastHelper.toastLong(this, "Lütfen geçerli bir adres giriniz");
             return false;
 
         } else if (getRealEstateCache().getLatitude() == 0d
                 || getRealEstateCache().getLongitude() == 0d) {
             ToastHelper.toastLong(this,
-                    "There is a problem with the Nearby Places. Please, insert another address");
+                    "Yakın Yerler ile ilgili bir sorun var. Lütfen başka bir adres girin");
             return false;
 
         } else if (getListOfImagesRealEstateCache().size() == 0) {
             ToastHelper.toastLong(this,
-                    "Please, insert at least one image");
+                    "Lütfen en az bir resim ekleyin");
             return false;
 
         } else {
@@ -1141,10 +1142,10 @@ public class CreateNewListingActivity extends BaseActivity implements Observer, 
         Log.d(TAG, "launchAreYouSureDialog: called!");
         Utils.launchSimpleDialog(
                 this,
-                "The changes will not be saved",
-                "Are you sure you want to proceed?",
-                "Yes, I am sure",
-                "No",
+                "Değişiklikler kaydedilmeyecek",
+                "Devam etmek istediğinize emin misiniz?",
+                "Evet",
+                "Hayır",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

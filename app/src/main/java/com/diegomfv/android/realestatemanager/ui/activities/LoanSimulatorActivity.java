@@ -521,19 +521,19 @@ public class LoanSimulatorActivity extends BaseActivity implements ModifyLoanDia
         Log.d(TAG, "allChecksPassed: called!");
 
         if (Utils.getStringFromTextView(tvLoanAmount).length() < 4) {
-            ToastHelper.toastShort(this, "LoanAmount not valid");
+            ToastHelper.toastShort(this,  "Kredi Tutarı geçerli değil");
             return false;
         }
         if (Utils.getFloatFromTextView(tvAnnualInterestRate) == 0f) {
-            ToastHelper.toastShort(this, "Annual Interest Rate not valid");
+            ToastHelper.toastShort(this, "Yıllık faiz oranı geçerli değil");
             return false;
         }
         if (Utils.getIntegerFromTextView(tvLoanPeriodInYears) == 0) {
-            ToastHelper.toastShort(this, "Loan Period not valid");
+            ToastHelper.toastShort(this, "Kredi süresi geçerli değil");
             return false;
         }
         if (Utils.getIntegerFromTextView(tvPaymentFrequency) == 0) {
-            ToastHelper.toastShort(this, "Payment Frequency not valid");
+            ToastHelper.toastShort(this, "ödeme sıklığı geçerli değil");
             return false;
         }
         return true;

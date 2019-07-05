@@ -36,8 +36,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * AuthLoginActivity is the entry point of the app.
- * It allows the user to sign in, sign up or recover the password
+ * AuthLoginActivity, uygulamanın giriş noktasıdır.
+ * Kullanıcının giriş yapmasını, kaydolmasını veya şifreyi kurtarmasını sağlar
  */
 public class AuthLoginActivity extends BaseActivity {
 
@@ -64,7 +64,7 @@ public class AuthLoginActivity extends BaseActivity {
 
     private TextInputAutoCompleteTextView tvPassword;
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     private List<Agent> listOfAgents;
 
@@ -74,35 +74,34 @@ public class AuthLoginActivity extends BaseActivity {
 
     private Unbinder unbinder;
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
         setContentView(R.layout.activity_auth_choose_login);
         unbinder = ButterKnife.bind(this);
 
         this.locationPermissionGranted = false;
         this.accessInternalStorageGranted = false;
 
-        /* We get the list of all agents from the database
+        /* Tüm verilerin listesini veri tabanından alıyoruz
+
          * */
         this.getListOfAgentsFromDatabase();
 
-        /* We get a reference to the views
+        /* Görüşlere referans alıyoruz
          * */
         this.getAllAcTextViews();
 
-        /* Layout configuration*/
+        /* Düzen yapılandırma*/
         this.configureLayout();
 
-        /* We check if we have the necessary permissions for the app to work
+        /* Uygulamanın çalışması için gerekli izinlere sahip olup olmadığımızı kontrol ederiz.
          * */
         checkAllPermissions();
 
-        /* In case of configuration change, we load the saved info before rotation
+        /* Yapılandırma değişikliği durumunda, kayıtlı bilgileri döndürmeden önce yükleriz
          * */
         loadInfoBeforeRotation(savedInstanceState);
     }
@@ -115,9 +114,7 @@ public class AuthLoginActivity extends BaseActivity {
 
             case R.id.button_sign_in_password_id: {
 
-                /* We check if we have the necessary permissions.
-                * If we do not, we ask for them.
-                 * */
+
                 if (allNecessaryPermissionsGranted()) {
                     if (allChecksPassed()) {
 
@@ -449,7 +446,7 @@ public class AuthLoginActivity extends BaseActivity {
     }
 
     /**
-     * Method that checks if we have a specific permission granted
+     * Belirli bir iznimiz olup olmadığını kontrol eden yöntem
      */
     private boolean checkPermission(String permission) {
         Log.d(TAG, "checkPermissions: called!");
@@ -461,7 +458,8 @@ public class AuthLoginActivity extends BaseActivity {
     }
 
     /**
-     * Method used to request permissions
+
+     * İzin istemek için kullanılan yöntem
      */
     private void requestPermission(String[] permissions, int requestCode) {
         Log.d(TAG, "requestPermission: called!");

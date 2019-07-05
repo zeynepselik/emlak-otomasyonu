@@ -25,9 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Diego Fajardo on 19/08/2018.
- */
+
 
 /**
  * Tássio Auad, Medium
@@ -121,14 +119,14 @@ public class InsertAddressDialogFragment extends DialogFragment {
             this.configureLayout();
 
             builder.setView(view)
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Log.d(TAG, "onClick: called!");
 
                         }
                     })
-                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    .setNegativeButton("İPTAL", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Log.d(TAG, "onClick: called!");
@@ -219,10 +217,10 @@ public class InsertAddressDialogFragment extends DialogFragment {
 
         // TODO: 23/08/2018 Use Resources instead of hardcode text
 
-        setHint(cardViewStreet, "Street");
-        setHint(cardViewLocality, "Locality");
-        setHint(cardViewCity, "City");
-        setHint(cardViewPostcode, "Postcode");
+        setHint(cardViewStreet, "Sokak");
+        setHint(cardViewLocality, "Semt");
+        setHint(cardViewCity, "Şehir");
+        setHint(cardViewPostcode, "Posta kodu");
     }
 
     /**
@@ -255,16 +253,16 @@ public class InsertAddressDialogFragment extends DialogFragment {
         Log.d(TAG, "checkTextViewsText: called!");
 
         if (Utils.getStringFromTextView(tvStreet).length() == 0) {
-            ToastHelper.toastShort(getActivity(), "Please, introduce a street");
+            ToastHelper.toastShort(getActivity(), "Lütfen sokak boş bırakmayınız");
 
         } else if (Utils.getStringFromTextView(tvLocality).length() == 0) {
-            ToastHelper.toastShort(getActivity(), "Please, introduce a locality");
+            ToastHelper.toastShort(getActivity(), "Lütfen bir semti boş bırakmayınız");
 
         } else if (Utils.getStringFromTextView(tvCity).length() == 0) {
-            ToastHelper.toastShort(getActivity(), "Please, introduce a city");
+            ToastHelper.toastShort(getActivity(), "Lütfen bir şehiri boş bırakmayınız");
 
         } else if (Utils.getStringFromTextView(tvPostcode).length() == 0) {
-            ToastHelper.toastShort(getActivity(), "Please, introduce a postcode");
+            ToastHelper.toastShort(getActivity(), "Lütfen bir posta kodunu boş bırakmayınız.");
 
         } else {
             listener.onDialogPositiveClick(

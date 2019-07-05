@@ -21,10 +21,6 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by Diego Fajardo on 27/08/2018.
- */
-
-/**
  * Activity that serves as base
  * for the other activities.
  */

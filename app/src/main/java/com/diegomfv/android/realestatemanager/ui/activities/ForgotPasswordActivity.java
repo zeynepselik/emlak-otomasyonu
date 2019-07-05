@@ -143,7 +143,7 @@ public class ForgotPasswordActivity extends BaseActivity {
      */
     private void setToolbarTitle() {
         Log.d(TAG, "setToolbarTitle: called!");
-        toolbar.setTitle("Recover Password");
+        toolbar.setTitle("\n" + "Şifre kurtarma");
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,8 +172,8 @@ public class ForgotPasswordActivity extends BaseActivity {
      */
     private void setAllHints() {
         Log.d(TAG, "setAllHints: called!");
-        // TODO: 23/08/2018 Use Resources instead of hardcoded text
-        setAutoCompleteTextViewHint(cardViewAnswer, "Answer");
+
+        setAutoCompleteTextViewHint(cardViewAnswer, "\n" + "Cevap");
     }
 
     /**

@@ -24,9 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Diego Fajardo on 02/09/2018.
- */
+
 public class InsertDescriptionDialogFragment extends android.support.v4.app.DialogFragment {
 
     private static final String TAG = InsertDescriptionDialogFragment.class.getSimpleName();
@@ -92,14 +90,14 @@ public class InsertDescriptionDialogFragment extends android.support.v4.app.Dial
             this.configureLayout();
 
             builder.setView(view)
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Log.d(TAG, "onClick: called!");
 
                         }
                     })
-                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    .setNegativeButton("İPTAL", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Log.d(TAG, "onClick: called!");
@@ -110,7 +108,7 @@ public class InsertDescriptionDialogFragment extends android.support.v4.app.Dial
             return builder.create();
 
         } else {
-            ToastHelper.toastShort(getActivity(), "The activity is null. DialogFragment cannot be created");
+            ToastHelper.toastShort(getActivity(), "Etkinlik boş. DialogFragment oluşturulamıyor");
             return null;
         }
 
@@ -188,7 +186,7 @@ public class InsertDescriptionDialogFragment extends android.support.v4.app.Dial
         Log.d(TAG, "setAllHints: called!");
 
         // TODO: 23/08/2018 Use Resources instead of hardcode text
-        setHint(cardViewDescription, "Description");
+        setHint(cardViewDescription, "Açıklama");
 
     }
 
@@ -212,9 +210,7 @@ public class InsertDescriptionDialogFragment extends android.support.v4.app.Dial
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
-     * Method to set the description
-     */
+
     private void setImageRealEstateDescription(AlertDialog dialog) {
         Log.d(TAG, "setImageRealEstateDescription: called!");
         imageRealEstate.setDescription(Utils.getStringFromTextView(tvDescription));

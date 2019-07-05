@@ -97,7 +97,7 @@ public class SignUpActivity extends BaseActivity {
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         setContentView(R.layout.activity_sign_up);
-        setTitle("Sign Up");
+        setTitle("Kayıt Ol");
         unbinder = ButterKnife.bind(this);
 
         /* We get all the accounts so a new account cannot be created with the same email
@@ -183,7 +183,7 @@ public class SignUpActivity extends BaseActivity {
      */
     private void setToolbarTitle() {
         Log.d(TAG, "setToolbarTitle: called!");
-        toolbar.setTitle("Sign Up");
+        toolbar.setTitle("Kaydol");
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -227,12 +227,12 @@ public class SignUpActivity extends BaseActivity {
      */
     private void setHints() {
         Log.d(TAG, "getAllTextInputLayouts: called!");
-        Utils.getTextInputLayoutFromCardview(cvFirstName).setHint("First Name");
-        Utils.getTextInputLayoutFromCardview(cvLastName).setHint("Last Name");
+        Utils.getTextInputLayoutFromCardview(cvFirstName).setHint("Adınız");
+        Utils.getTextInputLayoutFromCardview(cvLastName).setHint("Soyadınız");
         Utils.getTextInputLayoutFromCardview(cvEmail).setHint("Email");
-        Utils.getTextInputLayoutFromCardview(cvPassword).setHint("Password");
-        Utils.getTextInputLayoutFromCardview(cvMemDataQuestion).setHint("Memorable Data Question");
-        Utils.getTextInputLayoutFromCardview(cvMemDataAnswer).setHint("Memorable Data Answer");
+        Utils.getTextInputLayoutFromCardview(cvPassword).setHint("Parolanız");
+        Utils.getTextInputLayoutFromCardview(cvMemDataQuestion).setHint("Aklınıza gelen herhangi bir soru");
+        Utils.getTextInputLayoutFromCardview(cvMemDataAnswer).setHint("Sorunuzun cevabı");
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -288,7 +288,7 @@ public class SignUpActivity extends BaseActivity {
          * */
         for (int i = 0; i < getListOfAgents().size(); i++) {
             if (getListOfAgents().get(i).getEmail().equalsIgnoreCase(Utils.getStringFromTextView(tvEmail))) {
-                ToastHelper.toastShort(this, "This email is already in use by other account.");
+                ToastHelper.toastShort(this, "\n" + "Bu e-posta zaten başka bir hesap tarafından kullanılıyor.");
                 return;
             }
         }
@@ -331,14 +331,14 @@ public class SignUpActivity extends BaseActivity {
 
                         /* We launch MainActivity using an intent that clears the stack
                          * */
-                        ToastHelper.toastShort(SignUpActivity.this, "Sign up successful");
+                        ToastHelper.toastShort(SignUpActivity.this, "\n" +  "Kayıt başarılı");
                         launchActivityWithIntent();
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.e(TAG, "onError: " + e.getMessage());
-                        ToastHelper.toastShort(SignUpActivity.this, "Something went wrong");
+                        ToastHelper.toastShort(SignUpActivity.this, "Birşeyler yanlış gitti");
                     }
                 });
     }
@@ -350,27 +350,27 @@ public class SignUpActivity extends BaseActivity {
         Log.d(TAG, "allChecksPassed: called!");
 
         if (Utils.getStringFromTextView(tvFirstName).length() < 3) {
-            ToastHelper.toastShort(this, "The first name is too short");
+            ToastHelper.toastShort(this, "\n" +"Girmiş olduğunuz isim çok kısa");
             return false;
 
         } else if (Utils.getStringFromTextView(tvLastName).length() < 3) {
-            ToastHelper.toastShort(this, "The last name is too short");
+            ToastHelper.toastShort(this, "Girmiş olduğunuz soyadı çok kısa");
             return false;
 
         } else if (Utils.getStringFromTextView(tvEmail).length() < 5) {
-            ToastHelper.toastShort(this, "The email is too short");
+            ToastHelper.toastShort(this, "Girmiş olduğunuz Email çok kısa");
             return false;
 
         } else if (Utils.getStringFromTextView(tvPassword).length() < 5) {
-            ToastHelper.toastShort(this, "The password is too short");
+            ToastHelper.toastShort(this, "Girmiş olduğunuz parola çok kısa");
             return false;
 
         } else if (Utils.getStringFromTextView(tvMemDataQuestion).length() < 3) {
-            ToastHelper.toastShort(this, "The memorable data question is too short");
+            ToastHelper.toastShort(this, "Girmiş olduğunuz soru çok kısa");
             return false;
 
         } else if (Utils.getStringFromTextView(tvMemDataAnswer).length() < 3) {
-            ToastHelper.toastShort(this, "The memorable data answer is too short");
+            ToastHelper.toastShort(this, "Girmiş olduğunuz soru cevabınız çok kısa");
             return false;
 
         } else {

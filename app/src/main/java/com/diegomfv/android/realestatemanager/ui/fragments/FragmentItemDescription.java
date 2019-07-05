@@ -56,10 +56,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Created by Diego Fajardo on 16/08/2018.
- */
-
 public class FragmentItemDescription extends BaseFragment {
 
     private static final String TAG = FragmentItemDescription.class.getSimpleName();
@@ -414,11 +410,11 @@ public class FragmentItemDescription extends BaseFragment {
     private void setSoldState() {
         Log.d(TAG, "setSoldState: called!");
         if (getRealEstate().getDateSale() != null) {
-            tvSold.setText("SOLD on " + getRealEstate().getDateSale());
+            tvSold.setText("Satıldı " + getRealEstate().getDateSale());
             tvSold.setTextColor(getResources().getColor(android.R.color.white));
             tvSold.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         } else {
-            tvSold.setText("On Sale");
+            tvSold.setText("SATILIK");
             tvSold.setTextColor(getResources().getColor(R.color.colorPrimary));
             tvSold.setBackgroundColor(getResources().getColor(android.R.color.white));
         }

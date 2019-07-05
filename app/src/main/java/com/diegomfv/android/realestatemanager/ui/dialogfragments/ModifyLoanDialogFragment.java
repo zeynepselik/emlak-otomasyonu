@@ -24,9 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Diego Fajardo (https://github.com/diegomfv) on 23/09/2018.
- */
+
 public class ModifyLoanDialogFragment extends DialogFragment {
 
     private static final String TAG = ModifyLoanDialogFragment.class.getSimpleName();
@@ -130,7 +128,7 @@ public class ModifyLoanDialogFragment extends DialogFragment {
             this.configureLayout();
 
             builder.setView(view)
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    .setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Log.d(TAG, "onClick: called!");
@@ -138,7 +136,7 @@ public class ModifyLoanDialogFragment extends DialogFragment {
 
                         }
                     })
-                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    .setNegativeButton("İPTAL", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Log.d(TAG, "onClick: called!");
@@ -149,7 +147,7 @@ public class ModifyLoanDialogFragment extends DialogFragment {
             return builder.create();
 
         } else {
-            ToastHelper.toastShort(getActivity(), "The activity is null. DialogFragment cannot be created");
+            ToastHelper.toastShort(getActivity(), "Etkinlik boş. DialogFragment oluşturulamıyor");
             return null;
         }
 
@@ -226,9 +224,9 @@ public class ModifyLoanDialogFragment extends DialogFragment {
     private void setAllHints() {
         Log.d(TAG, "setAllHints: called!");
         // TODO: 23/08/2018 Use Resources instead of hardcode text
-        setHint(cardViewLoanAmount, "Loan Amount (" + Utils.getCurrencySymbol(currency) + ")");
-        setHint(cardViewLoanAnnualInterest, "Annual Interest Rate (%)");
-        setHint(cardViewLoanPeriodInYears, "Loan Period(in Years)");
+        setHint(cardViewLoanAmount, "Kredi Miktarı (" + Utils.getCurrencySymbol(currency) + ")");
+        setHint(cardViewLoanAnnualInterest, "Yıllık faiz oranı (%)");
+        setHint(cardViewLoanPeriodInYears, "Kredi Dönemi (Yıl olarak)");
         //setHint(cardViewLoanPaymentFrequency, "Payment Frequency (payments in  a year)");
     }
 
@@ -264,31 +262,31 @@ public class ModifyLoanDialogFragment extends DialogFragment {
 
 
         if (Utils.getStringFromTextView(tvLoanAmount).length() == 0 || loanAmount == 0) {
-            ToastHelper.toastShort(getActivity(), "Please, introduce a Loan Amount");
+            ToastHelper.toastShort(getActivity(), "Lütfen bir Kredi Tutarı girin");
 
         } else if (Utils.getStringFromTextView(tvLoanAnnualIntRate).length() == 0 || interestRate == 0) {
-            ToastHelper.toastShort(getActivity(), "Please, introduce an Annual Interest Rate");
+            ToastHelper.toastShort(getActivity(), "Lütfen yıllık bir faiz oranı tanıtın");
 
         } else if (Utils.getStringFromTextView(tvLoanPeriodYears).length() == 0 || loanPeriod == 0) {
-            ToastHelper.toastShort(getActivity(), "Please, introduce a Period in years");
+            ToastHelper.toastShort(getActivity(), "Lütfen yıl cinsinden bir periyodu tanıtın");
 
 //        } else if (Utils.getStringFromTextView(tvLoanPaymentFreq).length() == 0 || paymentFrequency == 0) {
 //            ToastHelper.toastShort(getActivity(), "Please, introduce the Payment Frequency");
 
         } else if (loanAmount > 1000000) {
-            ToastHelper.toastShort(getActivity(), "Sorry, the loan amount is too high");
+            ToastHelper.toastShort(getActivity(), "Üzgünüz, kredi miktarı çok yüksek");
 
         } else if (interestRate > 15) {
-            ToastHelper.toastShort(getActivity(), "Sorry, the interest rate is too high");
+            ToastHelper.toastShort(getActivity(), "Üzgünüz, faiz oranı çok yüksek ");
 
         } else if (loanPeriod > 60) {
-            ToastHelper.toastShort(getActivity(), "Sorry, the loan period is too high");
+            ToastHelper.toastShort(getActivity(), "Üzgünüz, kredi süresi çok yüksek");
 
         } else if (paymentFrequency > 12) {
-            ToastHelper.toastShort(getActivity(), "Sorry, the payment frequency is too high");
+            ToastHelper.toastShort(getActivity(), "Maalesef, ödeme sıklığı çok yüksek");
 
         } else if (loanAmount < 50000) {
-            ToastHelper.toastShort(getActivity(), "Sorry, the loan amount is too low");
+            ToastHelper.toastShort(getActivity(), "Maalesef, ödeme sıklığı çok düşük");
 
         } else if (loanPeriod < 5) {
             ToastHelper.toastShort(getActivity(), "Sorry, the loan period is too short");

@@ -12,13 +12,7 @@ import com.snatik.storage.Storage;
 import java.io.File;
 import java.util.List;
 
-/**
- * Created by Diego Fajardo on 16/08/2018.
- */
 
-/**
- * Application class
- */
 public class RealEstateManagerApp extends Application {
 
     private static final String TAG = RealEstateManagerApp.class.getSimpleName();

@@ -1,20 +1,6 @@
 package com.diegomfv.android.realestatemanager.data;
 
-/**
- * Created by Diego Fajardo on 05/08/2018.
- * Room database point of entry
- * version -> should be updated when we updateItem our database
- * exportSchema -> writes the database info to a folder
- * Room database point of entry
- * version -> should be updated when we updateItem our database
- * exportSchema -> writes the database info to a folder
- */
-/** Room database point of entry
- * */
 
-/** version -> should be updated when we updateItem our database
- * exportSchema -> writes the database info to a folder
- * */
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
@@ -39,17 +25,14 @@ import com.diegomfv.android.realestatemanager.data.typeconverters.AddressTypeCon
 import com.diegomfv.android.realestatemanager.data.typeconverters.RoomsRealEstateTypeConverter;
 import com.diegomfv.android.realestatemanager.data.typeconverters.StringListConverter;
 
-/** Room cannot automatically map complex extractors like DATE. In this cases,
- * you'll need a "type converter" (See Android Architecture Components,
- * Android Development Course, UDACITY)
- * */
+
 @Database(entities = {RealEstate.class, ImageRealEstate.class, PlaceRealEstate.class, Agent.class}, version = 1, exportSchema = false)
 @TypeConverters({StringListConverter.class, AddressTypeConverter.class, RoomsRealEstateTypeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String TAG = AppDatabase.class.getSimpleName();
 
-    /////////////////////////////////////
+
 
     private static AppDatabase sInstance;
 

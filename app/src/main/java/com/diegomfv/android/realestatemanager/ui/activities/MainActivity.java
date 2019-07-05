@@ -67,7 +67,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i(TAG, "onCreate: called!");
+        setContentView(R.layout.activity_main);
+
+        Log.i(TAG, "Oluşturulamadı!");
 
         this.editModeActive = false;
 
@@ -84,8 +86,6 @@ public class MainActivity extends BaseActivity {
 
         ifTabletObligateLandscape();
 
-
-        setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
 
         deviceIsHandset = updateDeviceIsHandset();
@@ -208,9 +208,9 @@ public class MainActivity extends BaseActivity {
     private void setToolbarTitle() {
         Log.d(TAG, "setToolbarTitle: called!");
         if (mainMenu) {
-            toolbar.setTitle("Main Menu");
+            toolbar.setTitle("Ana Menü");
         } else {
-            toolbar.setTitle("Found Listings");
+            toolbar.setTitle("Bulunan ilanlar");
         }
     }
 
@@ -225,11 +225,11 @@ public class MainActivity extends BaseActivity {
         Log.d(TAG, "updateMode: called!");
 
         if (!editModeActive) {
-            toolbar.setTitle("Edit mode");
-            toolbar.setSubtitle("Click an element");
+            toolbar.setTitle("Düzenleme modu");
+            toolbar.setSubtitle("Bir öğeye tıklayın");
             editModeActive = true;
         } else {
-            toolbar.setTitle("Real Estate Manager");
+            toolbar.setTitle("Emlak Otomasyonu");
             toolbar.setSubtitle(null);
             editModeActive = false;
         }
@@ -317,7 +317,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void hideTextViewShowFragments() {
-        Log.d(TAG, "hideTextViewData: called!");
+        Log.d(TAG, "HATA!");
         tvInsertData.setVisibility(View.GONE);
         fragment1Layout.setVisibility(View.VISIBLE);
         if (findViewById(R.id.fragment2_container_id) != null) {
@@ -336,7 +336,7 @@ public class MainActivity extends BaseActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Log.d(TAG, "onClick: called!");
+                        Log.d(TAG, "HATA!");
                         Utils.launchActivityClearStack(MainActivity.this, AuthLoginActivity.class);
                     }
                 });

@@ -502,7 +502,7 @@ public class PositionActivity extends BaseActivity {
         Log.d(TAG, "displayType: called!");
 
         if (type == null || type.isEmpty()) {
-            return "Type not available - ";
+            return "Yanlış birşeyler var! ";
 
         } else {
             return type + " - ";
@@ -518,7 +518,7 @@ public class PositionActivity extends BaseActivity {
         Log.d(TAG, "displayPrice: called!");
 
         if (price == 0.0f) {
-            return "Price not available";
+            return "Fiyat mevcut değil";
 
         } else {
             return Utils.getCurrencySymbol(currency)
